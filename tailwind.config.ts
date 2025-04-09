@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,35 +62,59 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Add game theme colors
+        game: {
+          primary: '#8B5CF6',
+          secondary: '#D946EF',
+          accent: '#F97316',
+          background: '#1A1F2C',
+          foreground: '#FFFFFF',
+          border: '#6E59A5',
+          muted: '#7E69AB',
+          success: '#10B981',
+          xp: '#4ADE80',
+        }
 			},
-			borderRadius: {
+      keyframes: {
+				'accordion-down': {
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
+				},
+				'accordion-up': {
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+        'pulse-light': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+        'bounce-small': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-4px)' },
+        },
+        'scale-up': {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'confetti': {
+          '0%': { transform: 'translateY(0) rotate(0)', opacity: '1' },
+          '100%': { transform: 'translateY(-100px) rotate(720deg)', opacity: '0' },
+        }
+			},
+			animation: {
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse-light': 'pulse-light 2s infinite ease-in-out',
+        'bounce-small': 'bounce-small 2s infinite ease-in-out',
+        'scale-up': 'scale-up 0.3s forwards ease-out',
+        'confetti': 'confetti 1s forwards ease-out',
+			},
+      borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
-			keyframes: {
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
-				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
